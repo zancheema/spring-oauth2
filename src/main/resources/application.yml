@@ -8,3 +8,26 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 238128617745-jq7i2hm18mmrm0l3oviut695nh92enf8.apps.googleusercontent.com
+            client-secret: DeeapYdNVf5eas3dKjuoravv
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+          github:
+            client-id: 19667c4866685921e997
+            client-secret: ca9cd3fdb7d882866388f0844157aabc4dbe6bb4
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - user:email
+              - read:user
+
+app:
+  secretKey: 926D96C90030DD58429D2751AC1BDBBC
+  tokenExpirationMsec: 864000000
