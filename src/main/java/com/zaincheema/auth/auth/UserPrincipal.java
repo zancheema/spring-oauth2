@@ -17,6 +17,7 @@ public class UserPrincipal implements UserDetails, OAuth2User {
     private String name;
     private String email;
     private String password;
+    private String imageUrl;
     private Map<String, Object> attributes;
     private Collection<? extends GrantedAuthority> authorities;
 
@@ -29,6 +30,7 @@ public class UserPrincipal implements UserDetails, OAuth2User {
         principal.setId(user.getId());
         principal.setName(user.getName());
         principal.setEmail(user.getEmail());
+        principal.setImageUrl(user.getImageUrl());
         principal.setPassword(user.getPassword());
         principal.setAuthorities(authorities);
         return principal;
@@ -69,6 +71,10 @@ public class UserPrincipal implements UserDetails, OAuth2User {
         return email;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -107,6 +113,10 @@ public class UserPrincipal implements UserDetails, OAuth2User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {

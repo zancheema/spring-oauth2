@@ -44,9 +44,9 @@ public class OAuth2Service extends DefaultOAuth2UserService {
      *   and reference a different profile
      */
     private void processUserInfo(OAuth2UserInfo info) {
-        boolean userExists = userRepository.existsByProviderId(info.getId()).orElse(false);
+        boolean userExists = userRepository.existsByProviderId(info.getId());
         String email = info.getEmail();
-        boolean existsByEmail = StringUtils.hasText(email) ? userRepository.existsByEmail(email).orElse(false) : true;
+        boolean existsByEmail = StringUtils.hasText(email) && userRepository.existsByEmail(email);
         if (!userExists && !existsByEmail) registerNewUser(info);
     }
 
